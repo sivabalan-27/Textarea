@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        #message {
+            width: 90%;
+            height: 130px;
+            padding: 10px;
+            border: 2px solid lightgray;
+            outline: none;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: none;
+        }
+
+        #message:focus {
+            border-color: blue;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+        }
+
+        #counter {
+            margin: 10px 0 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+        }
+
+        #warning {
+            color: red;
+            font-size: 13px;
+            margin: 5px 0;
+            display: none;
+        }
+
+        #btn {
+            background: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+
+
+    <div class="container">
+        <h2>Message Box</h2>
+        <textarea id="message" maxlength="200" placeholder="Enter Your Message"></textarea>
+        <h3 id="counter">0/200 characters</h3>
+        <h4 id="warning">You have reached the maximum character limit!</h4>
+        <button id="btn">Submit</button>
+    </div>
+
+    <script>
+
+        var textarea = document.getElementById("message")
+        var counter = document.getElementById("counter")
+        var warning = document.getElementById("warning")
+        var btn = document.getElementById("btn")
+        var maxchars = 200;
+
+        textarea.addEventListener("input", function () {
+            var typed = textarea.value.length;
+
+            counter.textContent = `${typed}/${maxchars} characters`;
+
+            if (typed >= maxchars) {
+                warning.style.display = "block"
+            }
+            else {
+                warning.style.display = "none"
+            }
+
+        })
+
+        btn.addEventListener("click", function () {
+            if (textarea.value.trim() === "") {
+
+            } else {
+                alert(" Your message was sent successfully!");
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
